@@ -1,0 +1,25 @@
+# config.yaml
+project_name: "NLP-TextClassification" # Weights & Biases 프로젝트 이름
+run_name: "BERT_Base_IMDB_Trial_1"  # Weights & Biases 런 이름
+output_dir: "./output"              # 모델 저장 및 로그 출력 디렉토리
+
+log_config:
+  use_wandb: True                   # Weights & Biases 사용 여부
+
+model_config:
+  model_name: "bert-base-uncased"   # 사용할 사전 학습 모델
+  num_labels: 2                     # 분류할 클래스 개수 (IMDB는 긍정/부정 2개)
+  classifier_dropout: 0.1           # 분류 레이어 드롭아웃 비율
+
+data_config:
+  model_name: "bert-base-uncased"   # 토크나이저를 위한 모델 이름
+  max_len: 128                      # 최대 시퀀스 길이
+  valid_size: 0.1                   # 훈련 데이터 중 검증용 비율
+  batch_size: 16                    # DataLoader 배치 크기
+
+optimizer_config:
+  learning_rate: 5e-5               # 학습률
+  warmup_ratio: 0.1                 # 워밍업 스텝 비율
+
+train_config:
+  epochs: 5                         # 학습 에포크 수
