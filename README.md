@@ -41,3 +41,27 @@
 
 - test accuracy
   <img width="1431" height="384" alt="Image" src="https://github.com/user-attachments/assets/b0ffd6cf-844c-40b5-bc33-eddd7dda2c37" />
+
+  ### IV-1. Additional Experiment
+  - RoBERTa 모델에서 epoch 3 부근부터 학습이 잘 되지 않는 것처럼 보이는 현상이 나타남.
+    (별도의 lr 조절이나 early stopping x)
+  - roberta-base에 대해서만 linear scheduler를 사용하여 추가 실험을 진행함.
+    - scheduler 외에 다른 조건은 동일
+
+  - train loss
+    <img width="1435" height="380" alt="Image" src="https://github.com/user-attachments/assets/baf16377-243c-4b56-b6ed-d7e00129d5e4" />
+  - validation loss
+    <img width="1434" height="382" alt="Image" src="https://github.com/user-attachments/assets/112eec38-27bd-4e65-9939-9a2cded8d548" />
+  - validation accuracy
+  - <img width="1432" height="385" alt="Image" src="https://github.com/user-attachments/assets/1ff6b035-9ddc-457b-8f03-42c0c4d69145" />
+  - test loss
+    <img width="1430" height="381" alt="Image" src="https://github.com/user-attachments/assets/e7ff1b3b-4e64-48aa-896f-f78eb6bdaea9" />
+  - test accuracy
+    <img width="1429" height="386" alt="Image" src="https://github.com/user-attachments/assets/6e2a6941-2dae-45d1-9b39-1af3f8893415" />
+
+  | model | BERT | RoBERTa | RoBERTa w/ linear scheduler |
+  |---|------|---------|-----------------------------|
+  | **test loss** | 0.316 | 0.255 | 0.507 |
+  | **test accuracy** | 0.885 | 0.892 | 0.905 |
+
+## V. Discussion
