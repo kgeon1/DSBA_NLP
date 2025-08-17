@@ -26,3 +26,18 @@
 - roberta-base (125M)
 
 ## IV. Result
+- train loss
+  <img width="1432" height="382" alt="Image" src="https://github.com/user-attachments/assets/2dbaae7e-f68f-4534-83d2-a12e252c4603" />
+  <img width="1428" height="386" alt="Image" src="https://github.com/user-attachments/assets/90b41fa2-a1c1-432b-b750-2cd556754006" />
+
+- validation loss
+  <img width="1429" height="380" alt="Image" src="https://github.com/user-attachments/assets/ffd9ae4c-ff15-4361-8cab-92fdc4bff105" />
+  
+- validation accuracy
+  <img width="1432" height="383" alt="Image" src="https://github.com/user-attachments/assets/503af68a-b0dc-4946-befa-fe0bb7be581d" />
+
+- test loss
+  <img width="1430" height="381" alt="Image" src="https://github.com/user-attachments/assets/6f936b70-55ec-4b14-a365-16f2a20d5fc5" />
+
+- test accuracy
+  <img width="1431" height="384" alt="Image" src="https://github.com/user-attachments/assets/b0ffd6cf-844c-40b5-bc33-eddd7dda2c37" />
