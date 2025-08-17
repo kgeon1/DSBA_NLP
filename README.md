@@ -78,4 +78,10 @@
   - train loss, valid loss, valid accuracy 모두 세 모델 중 가장 뛰어난 성능을 보였으며 test accuracy 역시 가장 높았음.
   - 하지만, test loss도 함께 크게 증가하였는데 learning rate를 줄이면서 모델이 천천히 수렴하여 스스로의 답에 확신을 갖지 못하는 상태라고 해석됨. 
 
+## VI. Conclusion
+- 세 모델의 accuracy가 크게 차이나지 않으므로 가장 안정적인 BERT가 가장 좋은 모델이라고 판단함. scheduler, batch size, epoch, early stopping 사용 여부 등의 하이퍼파라미터를 조절했을 때는 RoBERTa가 BERT보다 좋은 모델이 될 가능성도 충분하다고 생각됨.
 
+## 코드 작성 시 주의사항
+- BERT에서는 token_type_ids가 필요하지만 RoBERTa에서는 필요하지 않음
+  - 현재 코드에서는 if 문으로 각각 처리해주고 있는데 코드의 직관성이 떨어지는 것 같기도 해서 아예 코드를 분리하는 게 더 좋을 수도 있겠다는 생각이 듦.
+- validation step의 logging에서 train step까지 x축에 포함되어 그래프가 끊어지는 형태로 나타나는데 개선이 필요해보임.
