@@ -29,18 +29,18 @@
   <img width="892" height="142" alt="Image" src="https://github.com/user-attachments/assets/16c5f197-4b33-4497-8d0b-2292526b7a89" />
 
 ## IV. Discussion
-- BERT vs RoBERTa
-  - 특정 시점 (epoch 3) 이후 RoBERTa의 성능이 더이상 개선되지 않는 것처럼 보임
-    - overfitting?
-    - 근데 아무리 overfitting이라 하더라도 binary classification에서 accuracy가 0.5 수준이면 그냥 찍는다는 말인데 이게 가능한 현상인지 의문이 생김. (추가 실험에서는 이러한 문제 나타나지 않음)
-  - train loss, validation loss, validation accuracy에서는 BERT가 RoBERTa보다 지표가 좋게 나타났지만 test loss, test accuracy에서는 RoBERTa의 성능이 더 좋게 나타남.
-    - epoch마다 validation에서 최고 성능을 보인 모델을 저장하여 test를 진행하는 방식으로 실험을 진행하였는데, RoBERTa가 고장나기 이전까지의 최고 성능 기준으로는 RoBERTa의 성능이 더 좋았던 것으로 해석
-  - batch size 8000 수준에서 pretraining된 RoBERTa를 BERT와의 조건을 맞추기 위해 batch size 16에서 학습하였는데 이 때문에 문제가 생겼을 수도 있다고 생각됨. 이후 더 큰 batch size에서 추가 실험 필요해보임.
-
-- RoBERTa with linear scheduler
-  - linear scheduler를 사용했을 때는 위의 RoBERTa에서의 문제가 나타나지 않았음
-  - train loss, valid loss, valid accuracy 모두 세 모델 중 가장 뛰어난 성능을 보였으며 test accuracy 역시 가장 높았음.
-  - 하지만, test loss도 함께 크게 증가하였는데 learning rate를 줄이면서 모델이 천천히 수렴하여 스스로의 답에 확신을 갖지 못하는 상태라고 해석됨. 
-
+- avg_train_loss
+  - batch size가 커질 수록 대체로 빠르게 감소하는 경향을 보였으나 1024에서는 loss 감소 속도가 상대적으로 느렸음
+  - batch size가 지나치게 크면 모델 업데이트 빈도를 줄여 학습 효율을 저해했다고 판단됨
+- avg_valid_loss
+  - 전체적으로 증가하는 경향을 보였으며 이는 overfitting을 시사함
+  - 1024에서는 상대적으로 낮게 유지되었으며 overfitting이 덜 발생함
+- avg_valid_accuracy
+  - 전체적으로 batch size가 커짐에 따라 증가하는 경향을 보임
+  - 16에서는 빠르게 증가했다가 이후 overfitting으로 감소했지만 1024에서는 천천히 증가하여 최종적으로는 가장 높았음
+- test_loss
+  - 256, 64 순으로 높았고 16, 1024는 거의 비슷했음
+- test accuracy
+  - 거의 비슷했지만 64가 미세하게 가장 높았고 이후 256, 1024, 16 순이었음 
 ## V. Conclusion
-- 세 모델의 accuracy가 크게 차이나지 않으므로 가장 안정적인 BERT가 가장 좋은 모델이라고 판단함. scheduler, batch size, epoch, early stopping 사용 여부 등의 하이퍼파라미터를 조절했을 때는 RoBERTa가 BERT보다 좋은 모델이 될 가능성도 충분하다고 생각됨.
+- 세 모델의 test accuracy는 거의 비슷하므로 valid loss, valid accuracy, test loss에서 좋은 지표를 보인 batch size 1024 모델이 가장 좋다고 판단함
