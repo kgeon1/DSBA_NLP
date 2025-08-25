@@ -18,6 +18,7 @@
 ## III. Result
 - train loss
   <img width="1435" height="381" alt="Image" src="https://github.com/user-attachments/assets/7e4cc586-048a-4c03-bd59-3684a0b0e517" />
+  *로깅 step마다가 아니라 모델 업데이트마다 할 것
 
 - validation loss
   <img width="1437" height="383" alt="Image" src="https://github.com/user-attachments/assets/1996e59e-1a5e-4d49-8ad4-22e050107fd1" />
@@ -44,3 +45,7 @@
   - 거의 비슷했지만 64가 미세하게 가장 높았고 이후 256, 1024, 16 순이었음 
 ## V. Conclusion
 - 세 모델의 test accuracy는 거의 비슷하므로 valid loss, valid accuracy, test loss에서 좋은 지표를 보인 batch size 1024 모델이 가장 좋다고 판단함
+
+## Unfair
+- GA를 사용하면 epoch를 고정했을 때 모델이 업데이트되는 횟수가 달라짐
+- epoch를 바꿔서 step이 갖도록 해보자!
